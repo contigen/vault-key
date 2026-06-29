@@ -99,6 +99,7 @@ The smart contracts are written in Move and located under the `move/` directory.
 ### Prerequisites
 
 Ensure the following tools are installed:
+
 - Node.js (v20.9.0 or higher)
 - Bun
 - Sui CLI (for compiling and deploying smart contracts)
@@ -106,6 +107,7 @@ Ensure the following tools are installed:
 ### Installation
 
 Install the package dependencies:
+
 ```bash
 bun install
 ```
@@ -115,11 +117,13 @@ bun install
 To publish the smart contracts to the Sui Testnet:
 
 1. Navigate to the contract directory:
+
    ```bash
    cd move
    ```
 
 2. Publish the package:
+
    ```bash
    sui client publish --gas-budget 150000000 --skip-dependency-verification
    ```
@@ -129,15 +133,17 @@ To publish the smart contracts to the Sui Testnet:
 ### Running the Application
 
 Start the local development server:
+
 ```bash
 bun run dev
 ```
 
-Opening `http://localhost:3001` in a web browser loads the user interface.
+Opening `http://localhost:3000` in a web browser loads the user interface.
 
 ### Production Build
 
 To compile a production-optimised build of the application:
+
 ```bash
 bun run build
 ```
