@@ -78,7 +78,6 @@
   --accent-foreground: var(--mercury);
 
   --destructive: #ef4444;
-  /* Standard Red */
 
   --border: var(--rim);
   --input: var(--rim);
@@ -107,6 +106,10 @@
 
   html {
     @apply font-sans;
+  }
+
+  button:not(:disabled) {
+    @apply cursor-pointer
   }
 }
 
