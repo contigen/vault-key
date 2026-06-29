@@ -1,0 +1,12 @@
+[package]
+name = "vaultkey"
+edition = "2024.beta"
+
+[dependencies]
+Sui = { git = "https://github.com/MystenLabs/sui.git", subdir = "crates/sui-framework/packages/sui-framework", rev = "framework/testnet" }
+
+[addresses]
+vaultkey = "0x0"
+
+# After publishing, replace 0x0 with your package ID:
+# vaultkey = "0xYOUR_PACKAGE_ID_HERE"
