@@ -15,6 +15,7 @@ VaultKey is a zero-infrastructure credentials manager built entirely upon a dece
 
 - **Frontend**: Next.js 16 (App Router) styled with Tailwind CSS and Radix UI components.
 - **Blockchain Layer**: Sui Network (Testnet) for managing access control states and team memberships.
+- **Deployed Package ID (Testnet)**: `0x6061bad1fdba5a5359e26c47a951db94762c8a52699c4b5cef97f0cddaada708`
 - **Cryptography**: Seal SDK for threshold and Identity-Based Encryption.
 - **Storage Layer**: Walrus Protocol for decentralised, redundant blob storage of encrypted payloads.
 
