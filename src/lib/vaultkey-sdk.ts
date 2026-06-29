@@ -78,14 +78,26 @@ async function getObjectChanges(result: any): Promise<any[]> {
   }
   const digest = txResult?.digest ?? result?.digest
   if (digest) {
-    try {
-      const txResponse = await suiClient.getTransactionBlock({
-        digest,
-        options: { showObjectChanges: true },
-      })
-      return txResponse.objectChanges ?? []
-    } catch (e) {
-      console.error('Failed to fetch transaction block for objectChanges:', e)
+    // Retry querying the RPC node up to 6 times to allow the indexer to complete
+    for (let attempt = 1; attempt <= 6; attempt++) {
+      try {
+        const txResponse = await suiClient.getTransactionBlock({
+          digest,
+          options: { showObjectChanges: true },
+        })
+        if (txResponse.objectChanges) {
+          return txResponse.objectChanges
+        }
+      } catch (e) {
+        if (attempt === 6) {
+          console.error(
+            'Failed to fetch transaction block for objectChanges after retries:',
+            e,
+          )
+        } else {
+          await new Promise(resolve => setTimeout(resolve, 800))
+        }
+      }
     }
   }
   return []
@@ -495,6 +507,9 @@ export async function fetchTeams(
 export async function fetchTeamSecrets(
   teamObjectId: string,
 ): Promise<VaultEntryMeta[]> {
+  if (!teamObjectId || teamObjectId === '' || !teamObjectId.startsWith('0x')) {
+    return []
+  }
   let dynamicFields: any[] = []
   try {
     const dfResult = await suiClient.getDynamicFields({
