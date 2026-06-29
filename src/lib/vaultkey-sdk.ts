@@ -50,6 +50,7 @@ export type PolicyType = 'owner' | 'allowlist' | 'timelock'
 export interface StoreResult {
   blobId: string
   objectId: string
+  capId: string
 }
 
 export interface VaultEntryMeta {
