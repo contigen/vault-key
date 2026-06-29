@@ -10,8 +10,7 @@
   --font-sans: var(--font-host-grotesk);
   --font-mono: var(--font-geist-mono);
   --font-heading: var(--font-sans);
-  
-  /* Custom Palette */
+
   --color-vault-floor: var(--vault-floor);
   --color-steel: var(--steel);
   --color-rim: var(--rim);
@@ -27,7 +26,7 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
-  
+
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -44,51 +43,49 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
 }
 
 :root {
-  /* VaultKey Custom Palette */
   --vault-floor: #0a0a0a;
   --steel: #171717;
   --rim: #262626;
   --mercury: #e5e5e5;
   --mist: #a3a3a3;
 
-  /* Shadcn Aliases mapping to custom palette */
   --background: var(--vault-floor);
   --foreground: var(--mercury);
-  
+
   --card: var(--steel);
   --card-foreground: var(--mercury);
-  
+
   --popover: var(--steel);
   --popover-foreground: var(--mercury);
-  
+
   --primary: var(--mercury);
   --primary-foreground: var(--vault-floor);
-  
+
   --secondary: var(--steel);
   --secondary-foreground: var(--mercury);
-  
+
   --muted: var(--steel);
   --muted-foreground: var(--mist);
-  
+
   --accent: var(--steel);
   --accent-foreground: var(--mercury);
-  
-  --destructive: #ef4444; /* Standard Red */
-  
+
+  --destructive: #ef4444;
+  /* Standard Red */
+
   --border: var(--rim);
   --input: var(--rim);
   --ring: var(--rim);
-  
+
   --radius: 0.5rem;
 
-  /* Sidebar Variables */
   --sidebar: var(--steel);
   --sidebar-foreground: var(--mist);
   --sidebar-primary: var(--mercury);
@@ -99,24 +96,34 @@
   --sidebar-ring: var(--rim);
 }
 
-/* Base resets */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     @apply font-sans;
   }
 }
 
-/* Animations */
 @keyframes laser-sweep {
-  0% { width: 0; opacity: 0; }
-  50% { opacity: 1; }
-  100% { width: 100%; opacity: 0; }
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    width: 100%;
+    opacity: 0;
+  }
 }
 
 .animate-laser-sweep {
@@ -129,5 +136,7 @@
 }
 
 @keyframes fade-in {
-  to { opacity: 1; }
+  to {
+    opacity: 1;
+  }
 }
