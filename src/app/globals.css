@@ -1,26 +1,133 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-host-grotesk);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  
+  /* Custom Palette */
+  --color-vault-floor: var(--vault-floor);
+  --color-steel: var(--steel);
+  --color-rim: var(--rim);
+  --color-mercury: var(--mercury);
+  --color-mist: var(--mist);
+  --color-cyan-glow: #00f0ff;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* VaultKey Custom Palette */
+  --vault-floor: #0a0a0a;
+  --steel: #171717;
+  --rim: #262626;
+  --mercury: #e5e5e5;
+  --mist: #a3a3a3;
+
+  /* Shadcn Aliases mapping to custom palette */
+  --background: var(--vault-floor);
+  --foreground: var(--mercury);
+  
+  --card: var(--steel);
+  --card-foreground: var(--mercury);
+  
+  --popover: var(--steel);
+  --popover-foreground: var(--mercury);
+  
+  --primary: var(--mercury);
+  --primary-foreground: var(--vault-floor);
+  
+  --secondary: var(--steel);
+  --secondary-foreground: var(--mercury);
+  
+  --muted: var(--steel);
+  --muted-foreground: var(--mist);
+  
+  --accent: var(--steel);
+  --accent-foreground: var(--mercury);
+  
+  --destructive: #ef4444; /* Standard Red */
+  
+  --border: var(--rim);
+  --input: var(--rim);
+  --ring: var(--rim);
+  
+  --radius: 0.5rem;
+
+  /* Sidebar Variables */
+  --sidebar: var(--steel);
+  --sidebar-foreground: var(--mist);
+  --sidebar-primary: var(--mercury);
+  --sidebar-primary-foreground: var(--vault-floor);
+  --sidebar-accent: var(--vault-floor);
+  --sidebar-accent-foreground: var(--mercury);
+  --sidebar-border: var(--rim);
+  --sidebar-ring: var(--rim);
+}
+
+/* Base resets */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Animations */
+@keyframes laser-sweep {
+  0% { width: 0; opacity: 0; }
+  50% { opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+
+.animate-laser-sweep {
+  animation: laser-sweep 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.reveal-char {
+  opacity: 0;
+  animation: fade-in 0.1s forwards;
+}
+
+@keyframes fade-in {
+  to { opacity: 1; }
 }
